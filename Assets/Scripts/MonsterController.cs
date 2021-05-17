@@ -21,4 +21,15 @@ public class MonsterController : MonoBehaviour
     {
 
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Fire")
+        {
+            FireBall fb = other.gameObject.GetComponent<FireBall>();
+
+            MonsterStat.instance.Hit(this.gameObject, fb.damage, "magical", "attack");
+            //Destroy(other.gameObject);
+        }
+    }
 }

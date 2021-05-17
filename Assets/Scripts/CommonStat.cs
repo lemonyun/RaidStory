@@ -33,6 +33,10 @@ public class CommonStat : MonoBehaviour
         currentHP -= calDam;
         
         FloatingTextManager.instance.StartCoroutine(FloatingTextManager.instance.FloatingText(obj, calDam, hitoratk));
+
+        if(currentHP < 0){
+            Die();
+        }
     }
 
     public int CalDam(int damage, string property)
@@ -57,5 +61,6 @@ public class CommonStat : MonoBehaviour
     public void Die()
     {
         Destroy(this.gameObject);
+
     }
 }

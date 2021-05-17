@@ -20,7 +20,9 @@ public class CameraManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.Lerp(transform.position, player.transform.position + distPlayerToCam, Time.deltaTime * 2.0f) ;
+        if(player != null){
+            transform.position = Vector3.Lerp(transform.position, player.transform.position + distPlayerToCam, Time.deltaTime * 2.0f) ;
+        }
     }
 
     IEnumerator ChasePlayer()

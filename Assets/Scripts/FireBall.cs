@@ -18,15 +18,6 @@ public class FireBall : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector3.forward * Time.deltaTime * moveSpeed);
-    }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Monster")
-        {
-            Debug.Log("attack");
-            MonsterStat.instance.Hit(other.gameObject, damage, property, "attack");
-            Destroy(this.gameObject);
-        }
     }
 }

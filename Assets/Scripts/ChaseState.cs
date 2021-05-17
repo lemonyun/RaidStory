@@ -18,16 +18,18 @@ public class ChaseState : StateMachineBehaviour
     //OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        monsterPos.position = Vector3.MoveTowards(monsterPos.position, playerPos.position, speed * Time.deltaTime);
-        
-
-        monsterPos.LookAt(playerPos);
-        monsterPos.Rotate(0, -90, 0);
-        if(Vector3.Distance(monsterPos.position, playerPos.position) < 2.0f)
-        {
-            if(!animator.GetBool("isAttack"))
-                animator.SetBool("isAttack", true);
+        if(playerPos != null && monsterPos != null){
+            monsterPos.position = Vector3.MoveTowards(monsterPos.position, playerPos.position, speed * Time.deltaTime);
             
+
+            monsterPos.LookAt(playerPos);
+            monsterPos.Rotate(0, -90, 0);
+            if(Vector3.Distance(monsterPos.position, playerPos.position) < 2.0f)
+            {
+                if(!animator.GetBool("isAttack"))
+                    animator.SetBool("isAttack", true);
+                
+            }
         }
     }
 
